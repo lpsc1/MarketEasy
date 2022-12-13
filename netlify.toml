@@ -1,4 +1,6 @@
+[[plugins]]
+package = "@netlify/plugin-nextjs"
+
 [build]
-base = "."
-command = "npm run build"
-publish = "/opt/build/repo/build"
+command = "yarn next build"
+publish = ".next"
