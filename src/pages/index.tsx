@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import React from 'react'
 import { Header } from '../components/header'
-import * as S from './styles'
+import * as S from '../styles/index/styles'
 import {BsTools} from 'react-icons/bs'
 
 export default function Home() {

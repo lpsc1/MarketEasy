@@ -7,7 +7,7 @@ import { ProductCard } from "../../components/productCard";
 import { TotalCard } from "../../components/totalCard";
 import { deleteItem, getItens, Itens, postItem } from "../../services/item";
 
-import * as S from "./styles";
+import * as S from "../../styles/lista/styles";
 type DataForm = {
   name: string;
   amount: number;
