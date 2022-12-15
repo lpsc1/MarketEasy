@@ -78,6 +78,7 @@ const List: NextPage = () => {
         <S.ButtonAdd onClick={() => setOpenModal(true)} windowWidth={windowWidth}>Adicionar</S.ButtonAdd>
       </S.Content>
       <Modal
+        windowWidth={windowWidth}
         isOpen={openModal}
         onRequestClose={() => setOpenModal(!openModal)}
         onSubmit={(data) => handleSubmit(data)}

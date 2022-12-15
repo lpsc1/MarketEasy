@@ -8,6 +8,7 @@ interface ModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
   onSubmit: (data: FormData) => void;
+  windowWidth: number;
 }
 
 type FormData = {
@@ -16,7 +17,7 @@ type FormData = {
   value: string;
 };
 
-export function Modal({ isOpen, onRequestClose, onSubmit }: ModalProps) {
+export function Modal({ isOpen, onRequestClose, onSubmit, windowWidth }: ModalProps) {
   const { register, handleSubmit, setValue , resetField , formState:{}} = useForm<FormData>();
 
   useEffect(() => {
@@ -33,7 +34,7 @@ export function Modal({ isOpen, onRequestClose, onSubmit }: ModalProps) {
       style={{
         content: {
           borderRadius: "10px",
-          height: "45vh",
+          height: windowWidth > 1024 ? "50vh" : '45vh',
           marginInline: "5%",
           marginTop: "25vh",
           paddingTop: "4vh",
@@ -71,7 +72,7 @@ export function Modal({ isOpen, onRequestClose, onSubmit }: ModalProps) {
               {...register("amount")}
             />
           </S.BoxLabel>
-        <S.Button type="submit">Adicionar</S.Button>
+        <S.Button type="submit" windowWidth={windowWidth}>Adicionar</S.Button>
       </S.Container>
     </ReactModal>
   );

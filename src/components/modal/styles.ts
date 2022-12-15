@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import theme from '../../styles/theme';
 
+interface props {
+    windowWidth: number;
+}
+
 export const Container = styled.form`
     width: 100%;
     display: flex;
@@ -57,9 +61,9 @@ export const BoxLabel = styled.div`
     flex-direction: column;
     align-items: center;
 `;
-export const Button = styled.button`
+export const Button = styled.button<props>`
     position: absolute;
-    margin-top: 43vh;
+    margin-top: ${({windowWidth}) => windowWidth > 1024 ? '48vh' : '43vh'};
     width: 40%;
     border: none;
     padding: 10px 0;
