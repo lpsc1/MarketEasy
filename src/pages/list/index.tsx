@@ -20,6 +20,9 @@ const List: NextPage = () => {
   const [reload, setReload] = useState(false);
   const [countValue, setCountValue] = useState(0);
   const [countItens, setCountItens] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  
 
   const handleSubmit = async (data: DataForm) => {
     setOpenModal(!openModal);
@@ -30,6 +33,8 @@ const List: NextPage = () => {
     setReload(!reload);
   };
   useEffect(() => {
+    const width = window.screen.width;
+    setWindowWidth(width)
     const response = getItens();
     setItens(response);
     var sumValue = 0;
@@ -39,16 +44,15 @@ const List: NextPage = () => {
       aux = response[i].amount * Number(response[i].value);
       sumValue += aux;
       sumItens += Number(response[i].amount);
-      console.log(sumItens)
     };
     setCountItens(sumItens);
     setCountValue(sumValue);  
   }, [openModal, reload]);
 
   return (
-    <S.Container>
+    <S.Container windowWidth={windowWidth}>
       <Header back={true} />
-      <S.HeadContainer>
+      <S.HeadContainer windowWidth={windowWidth}>
         <TotalCard value={countItens} type="items" />
         <TotalCard value={countValue} type="money" />
       </S.HeadContainer>
@@ -71,7 +75,7 @@ const List: NextPage = () => {
             onEdit={() => setReload(!reload)}
           />
         ))}
-        <S.ButtonAdd onClick={() => setOpenModal(true)}>Adicionar</S.ButtonAdd>
+        <S.ButtonAdd onClick={() => setOpenModal(true)} windowWidth={windowWidth}>Adicionar</S.ButtonAdd>
       </S.Content>
       <Modal
         isOpen={openModal}

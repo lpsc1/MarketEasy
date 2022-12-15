@@ -71,7 +71,6 @@ export function ProductCard({
         break;
     }
   };
-  //console.log("SONO", editValue)
 
   return (
     <S.Main>
@@ -87,6 +86,8 @@ export function ProductCard({
           placeholder="0"
           defaultValue={amount.toFixed()}
           onChange={(e) => handleChange(e, "amount")}
+          onBlur={() => [setEditing(!editing), setMoving(false)]}
+          onBlurCapture={onEdit}
         />
         <S.Line />
         <S.ItemInput
@@ -96,6 +97,8 @@ export function ProductCard({
           placeholder="Item"
           defaultValue={name}
           onChange={(e) => handleChange(e, "item")}
+          onBlur={() => [setEditing(!editing), setMoving(false)]}
+          onBlurCapture={onEdit}
         />
         <S.Line />
         <S.ValueInput
@@ -104,6 +107,8 @@ export function ProductCard({
           placeholder="0,00"
           value={!editing ? Number(editValue).toFixed(2) : editValue}
           onChange={(e) => handleChange(e, "value")}
+          onBlur={() => [setEditing(!editing), setMoving(false)]}
+          onBlurCapture={onEdit}
         />
       </S.Container>
       <S.Edit

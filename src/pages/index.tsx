@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { Header } from '../components/header'
 import * as S from '../styles/index/styles'
-import {BsTools} from 'react-icons/bs'
+import {BsTools, BsLinkedin} from 'react-icons/bs'
 
 export default function Home() {
   const router = useRouter()
@@ -22,6 +22,7 @@ export default function Home() {
         </S.Content>
         <S.Footer>
           <S.Text>by</S.Text><S.Text className='footer'>Lucas Carvalho</S.Text>
+          <S.LinkedinLink href='https://www.linkedin.com/in/lpsc1/' target={'_blank'}><BsLinkedin className='icon'/></S.LinkedinLink>
         </S.Footer>
       
     </S.Container>

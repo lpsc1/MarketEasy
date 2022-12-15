@@ -41,7 +41,7 @@ export function Modal({ isOpen, onRequestClose, onSubmit }: ModalProps) {
           border: `1px solid ${theme.COLORS.TERCIARY}`,
         },
         overlay: {
-          backgroundColor: "rgb(0 0 0/ 0.7)",
+          backgroundColor: "rgb(0 0 0/ 0.9)",
         },
       }}
       onRequestClose={onRequestClose}

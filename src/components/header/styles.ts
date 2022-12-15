@@ -6,7 +6,6 @@ export const Container = styled.div`
     padding: 5%;
     align-items: center;
     justify-content: center;
-    background-color: ${theme.COLORS.PRIMARY};
     .icon-box{
         background-color: transparent;
         border: none;

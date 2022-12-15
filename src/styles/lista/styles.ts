@@ -1,37 +1,40 @@
 import styled from 'styled-components';
 import theme from '../theme';
 
+interface props {
+    windowWidth: number;
+}
 
-export const Container = styled.div`
+export const Container = styled.div<props>`
     display: flex;
     width: 100%;
     flex-direction: column;
     align-items: center;
     height: 100vh;
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: ${({windowWidth}) => windowWidth > 1024 ? 'auto' : 'hidden'};
     //padding-bottom: 15%;
     background-color: ${theme.COLORS.PRIMARY};
 `;
 
-export const HeadContainer = styled.div`
+export const HeadContainer = styled.div<props>`
     display: flex;
     width: 90%;
     align-items: center;
     border-radius: 10px;
-    padding: 2%;
     justify-content: space-around;
-    margin: 2% 0 5% 0;
+    padding: ${({windowWidth}) => windowWidth > 1024 ? '' : '1%'};
+    margin:${({windowWidth}) => windowWidth > 1024 ? '' : '2% 0 5% 0'} ;
 `;
 export const Line = styled.div`
     padding: 2% 0;
     border-left: 1px solid ${theme.COLORS.SECUNDARY};
 `;
-export const ButtonAdd = styled.button`
+export const ButtonAdd = styled.button<props>`
     width: 40%;
     position: fixed;
     bottom: 0;
-    margin-bottom: 5%;
+    margin-bottom: ${({windowWidth}) => windowWidth > 1024 ? '1%' : '5%'};
     border: none;
     padding: 10px 0;
     border-radius: 10px;
