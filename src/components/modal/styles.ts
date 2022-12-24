@@ -10,6 +10,11 @@ export const Container = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
+    @keyframes bottom-to-top {
+        from { 
+           transform: translateY(150vh);
+        }
+    }
 `;
 export const Title = styled.h1`
     color: ${theme.COLORS.TERCIARY};

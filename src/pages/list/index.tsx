@@ -22,8 +22,6 @@ const List: NextPage = () => {
   const [countItens, setCountItens] = useState(0);
   const [windowWidth, setWindowWidth] = useState(0);
 
-  
-
   const handleSubmit = async (data: DataForm) => {
     setOpenModal(!openModal);
     postItem(data);

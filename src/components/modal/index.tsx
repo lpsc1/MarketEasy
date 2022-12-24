@@ -43,6 +43,7 @@ export function Modal({ isOpen, onRequestClose, onSubmit, windowWidth }: ModalPr
         },
         overlay: {
           backgroundColor: "rgb(0 0 0/ 0.9)",
+          animation: 'bottom-to-top .5s linear',
         },
       }}
       onRequestClose={onRequestClose}
