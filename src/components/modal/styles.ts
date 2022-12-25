@@ -15,6 +15,12 @@ export const Container = styled.form`
            transform: translateY(150vh);
         }
     }
+    @keyframes top-to-bottom {
+        to { 
+           transform: translateY(150vh);
+        }
+    }
+
 `;
 export const Title = styled.h1`
     color: ${theme.COLORS.TERCIARY};

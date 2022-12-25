@@ -31,6 +31,7 @@ export function Modal({ isOpen, onRequestClose, onSubmit, windowWidth }: ModalPr
       ariaHideApp={false}
       className="modal"
       isOpen={isOpen}
+      closeTimeoutMS={400}
       style={{
         content: {
           borderRadius: "10px",
@@ -43,7 +44,7 @@ export function Modal({ isOpen, onRequestClose, onSubmit, windowWidth }: ModalPr
         },
         overlay: {
           backgroundColor: "rgb(0 0 0/ 0.9)",
-          animation: 'bottom-to-top .5s linear',
+          animation: isOpen ? 'bottom-to-top .5s linear' : 'top-to-bottom .5s linear',
         },
       }}
       onRequestClose={onRequestClose}
