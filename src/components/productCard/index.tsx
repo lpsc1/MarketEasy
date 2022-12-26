@@ -23,7 +23,6 @@ export function ProductCard({
   onEdit,
 }: ProductCardProps) {
   const [editValue, setEditValue] = useState(String(value));
-  const [trasnlateX, setTranslateX] = useState(0);
   const [move, setMove] = useState(0);
   const [moving, setMoving] = useState(false);
   const [editing, setEditing] = useState(false);
@@ -34,7 +33,6 @@ export function ProductCard({
     }
     if (can > 50) {
       setMoving(true);
-      setTranslateX(120);
     }
   }
 
