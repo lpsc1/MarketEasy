@@ -10,7 +10,7 @@ export async function getIp() {
     }
     const ip = await axios.get("https://api.ipify.org")
     console.log(ip.data)
-    const key = 'f42c6e9e';
+    const key = '91e6132f';
     const { data } = await axios.get(`https://api.hgbrasil.com/geoip?format=json-cors&key=${key}&address=${ip.data}&fields=only_results,city,region,country_name,continent&precision=false`);
     console.log("PEGOU O IP", data)
     localStorage.setItem("IP_DATA_CLIENT", JSON.stringify(data));
