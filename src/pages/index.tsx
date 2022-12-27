@@ -13,7 +13,6 @@ export default function Home({ NEXT_PUBLIC_API_HGBRASIL }: HomeProps) {
   const router = useRouter();
 
   useEffect(() => {
-    console.log("VARIAVEL", NEXT_PUBLIC_API_HGBRASIL)
     sendNotification(NEXT_PUBLIC_API_HGBRASIL);
   }, []);
 
