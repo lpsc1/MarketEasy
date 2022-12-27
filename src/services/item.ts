@@ -48,7 +48,10 @@ export function getItens() {
 
 export function deleteItem(id: number) {
   const storage = localStorage.getItem("Itens");
-  const DataFormated: Itens = JSON.parse(storage as string);
+  if (storage === null){
+    return []
+  }
+  const DataFormated: Itens = JSON.parse(storage);
   const newData = DataFormated.filter((item) => item.id !== id);
   localStorage.setItem("Itens", JSON.stringify(newData));
 }

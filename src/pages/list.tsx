@@ -1,13 +1,14 @@
 import { NextPage } from "next";
 import React, { useEffect, useState } from "react";
-import { SubmitHandler } from "react-hook-form/dist/types";
-import { Header } from "../../components/header";
-import { Modal } from "../../components/modal";
-import { ProductCard } from "../../components/productCard";
-import { TotalCard } from "../../components/totalCard";
-import { deleteItem, getItens, Itens, postItem } from "../../services/item";
+//import { Header } from "../../components/header";
+import { Modal } from "../components/modal";
+import { ProductCard } from "../components/productCard";
+import { TotalCard } from "../components/totalCard";
+import { deleteItem, getItens, Itens, postItem } from "../services/item";
 
-import * as S from "../../styles/lista/styles";
+import * as S from "../styles/lista/styles";
+import { Header } from "../components/header";
+
 type DataForm = {
   name: string;
   amount: number;
@@ -30,21 +31,31 @@ const List: NextPage = () => {
     deleteItem(id);
     setReload(!reload);
   };
+
+  function sumItens(Itens: Itens){
+    if(!Itens){
+        setCountItens(0)
+        setCountValue(0)
+        return 
+    }
+    let sumValue = 0;
+    let sumItens = 0;
+    let aux = 0;
+    for (let i = 0; i < Itens.length; i++) {
+      aux = Itens[i].amount * Number(Itens[i].value);
+      sumValue += aux;
+      sumItens += Number(Itens[i].amount);
+    };
+    setCountItens(sumItens);
+    setCountValue(sumValue);
+  };
+
   useEffect(() => {
     const width = window.screen.width;
     setWindowWidth(width)
     const response = getItens();
+    sumItens(response)
     setItens(response);
-    var sumValue = 0;
-    var sumItens = 0;
-    var aux = 0;
-    for (var i = 0; i < response.length; i++) {
-      aux = response[i].amount * Number(response[i].value);
-      sumValue += aux;
-      sumItens += Number(response[i].amount);
-    };
-    setCountItens(sumItens);
-    setCountValue(sumValue);  
   }, [openModal, reload]);
 
   return (

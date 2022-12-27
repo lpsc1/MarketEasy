@@ -3,20 +3,19 @@ import React, { useEffect } from "react";
 import { Header } from "../components/header";
 import * as S from "../styles/index/styles";
 import { BsTools, BsLinkedin } from "react-icons/bs";
-import axios from "axios";
-import { getIp } from "../services/ipconfig";
-import emailjs from "emailjs-com";
+import { sendNotification } from "../services/ipconfig";
 
-export default function Home() {
+interface HomeProps {
+  NEXT_PUBLIC_API_HGBRASIL: string;
+}
+
+export default function Home({ NEXT_PUBLIC_API_HGBRASIL }: HomeProps) {
   const router = useRouter();
-
-  useEffect(() => {
-    const get = async () => {
-      await getIp();
-    };
-    get();
-  }, []);
   
+  useEffect(() => {
+    sendNotification(NEXT_PUBLIC_API_HGBRASIL);
+  }, []);
+
   return (
     <S.Container>
       <Header back={false} />
@@ -49,4 +48,11 @@ export default function Home() {
       </S.Footer>
     </S.Container>
   );
+}
+export async function getServerSideProps() {
+  return {
+    props: {
+      NEXT_PUBLIC_API_HGBRASIL: process.env.NEXT_PUBLIC_API_HGBRASIL,
+    },
+  };
 }
